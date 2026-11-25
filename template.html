@@ -32,12 +32,30 @@
     color: #fff;
     padding: 2.4rem 1.25rem 2rem;
   }
-  header .inner, main, footer { max-width: 60rem; margin: 0 auto; }
+  header .inner, .layout, footer { max-width: 76rem; margin: 0 auto; }
   header p.uni { margin: 0 0 .4rem; font-size: .9rem; letter-spacing: .04em; opacity: .85; }
   header h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.2; }
   header p.intro { margin: .8rem 0 0; max-width: 40rem; opacity: .92; }
 
-  main { padding: 1.5rem 1.25rem 3rem; }
+  .layout { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 2rem; padding: 0 1.25rem; }
+  main { padding: 1.5rem 0 3rem; min-width: 0; }
+
+  /* ---- Decorative column on the left (gears and workers) ---- */
+  .rail { position: sticky; top: 1rem; align-self: start; padding-top: 1.6rem; }
+  .rail-art { display: block; width: 100%; height: auto; overflow: visible; }
+  .gear { transform-box: view-box; }
+  .spin-cw-a  { animation: spin 48s linear infinite; }
+  .spin-ccw-b { animation: spin 30s linear infinite reverse; }
+  .spin-cw-c  { animation: spin 36s linear infinite; }
+  .spin-ccw-d { animation: spin 24s linear infinite reverse; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @media (prefers-reduced-motion: reduce) { .gear { animation: none !important; } }
+
+  /* ---- Yellow and black hazard stripe under the banner ---- */
+  .hazard {
+    height: 10px;
+    background: repeating-linear-gradient(-45deg, #f6c000 0 14px, #1b1b1b 14px 28px);
+  }
 
   /* ---- One block per year ---- */
   section.year { margin-top: 2.2rem; }
@@ -125,6 +143,12 @@
 
   footer { padding: 1rem 1.25rem 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
 
+  /* ---- Narrow screens: drop the left column ---- */
+  @media (max-width: 62rem) {
+    .layout { display: block; }
+    .rail { display: none; }
+  }
+
   /* ---- Small screens ---- */
   @media (max-width: 36rem) {
     summary { flex-wrap: wrap; }
@@ -142,10 +166,25 @@
     <p class="intro">Browse past final year projects by year. Click a project to read its abstract and download the full report.</p>
   </div>
 </header>
+<div class="hazard" aria-hidden="true"></div>
 
-<main>
+<div class="layout">
+  <!-- Decorative artwork. To remove it, delete everything from <aside> to </aside>. -->
+  <aside class="rail" aria-hidden="true">
+<svg class="rail-art" viewBox="0 0 200 640" xmlns="http://www.w3.org/2000/svg" role="presentation" focusable="false">
+  <g class="gear spin-cw-a" style="transform-origin:52px 84px"><path fill="var(--accent)" fill-rule="evenodd" d="M110.6 77.1 L120.4 79.7 L120.4 88.3 L110.6 90.9 L108.8 100.0 L116.8 106.2 L113.5 114.1 L103.5 112.8 L98.3 120.5 L103.4 129.3 L97.3 135.4 L88.5 130.3 L80.8 135.5 L82.1 145.5 L74.2 148.8 L68.0 140.8 L58.9 142.6 L56.3 152.4 L47.7 152.4 L45.1 142.6 L36.0 140.8 L29.8 148.8 L21.9 145.5 L23.2 135.5 L15.5 130.3 L6.7 135.4 L0.6 129.3 L5.7 120.5 L0.5 112.8 L-9.5 114.1 L-12.8 106.2 L-4.8 100.0 L-6.6 90.9 L-16.4 88.3 L-16.4 79.7 L-6.6 77.1 L-4.8 68.0 L-12.8 61.8 L-9.5 53.9 L0.5 55.2 L5.7 47.5 L0.6 38.7 L6.7 32.6 L15.5 37.7 L23.2 32.5 L21.9 22.5 L29.8 19.2 L36.0 27.2 L45.1 25.4 L47.7 15.6 L56.3 15.6 L58.9 25.4 L68.0 27.2 L74.2 19.2 L82.1 22.5 L80.8 32.5 L88.5 37.7 L97.3 32.6 L103.4 38.7 L98.3 47.5 L103.5 55.2 L113.5 53.9 L116.8 61.8 L108.8 68.0 Z M40.0 84.0 a12 12 0 1 0 24 0 a12 12 0 1 0 -24 0 Z M71.9 102.2 a11.8 11.8 0 1 0 23.5 0 a11.8 11.8 0 1 0 -23.5 0 Z M40.2 120.5 a11.8 11.8 0 1 0 23.5 0 a11.8 11.8 0 1 0 -23.5 0 Z M8.6 102.2 a11.8 11.8 0 1 0 23.5 0 a11.8 11.8 0 1 0 -23.5 0 Z M8.6 65.8 a11.8 11.8 0 1 0 23.5 0 a11.8 11.8 0 1 0 -23.5 0 Z M40.2 47.5 a11.8 11.8 0 1 0 23.5 0 a11.8 11.8 0 1 0 -23.5 0 Z M71.9 65.7 a11.8 11.8 0 1 0 23.5 0 a11.8 11.8 0 1 0 -23.5 0 Z"/></g>
+  <g class="gear spin-ccw-b" style="transform-origin:156px 84px"><path fill="var(--accent-2)" fill-rule="evenodd" d="M121.3 79.6 L112.5 74.6 L115.3 66.1 L125.3 67.1 L130.5 60.0 L126.4 50.8 L133.6 45.6 L141.1 52.3 L149.4 49.6 L151.5 39.7 L160.5 39.7 L162.6 49.6 L170.9 52.3 L178.4 45.6 L185.6 50.8 L181.5 60.0 L186.7 67.1 L196.7 66.1 L199.5 74.6 L190.7 79.6 L190.7 88.4 L199.5 93.4 L196.7 101.9 L186.7 100.9 L181.5 108.0 L185.6 117.2 L178.4 122.4 L170.9 115.7 L162.6 118.4 L160.5 128.3 L151.5 128.3 L149.4 118.4 L141.1 115.7 L133.6 122.4 L126.4 117.2 L130.5 108.0 L125.3 100.9 L115.3 101.9 L112.5 93.4 L121.3 88.4 Z M148.0 84.0 a8 8 0 1 0 16 0 a8 8 0 1 0 -16 0 Z"/></g>
+  <g transform="translate(52,196)"><ellipse cx="0" cy="254" rx="36" ry="5" fill="#000" opacity=".10"/><rect x="-20" y="148" width="17" height="98" rx="7" fill="#2d3b55"/><rect x="3" y="148" width="17" height="98" rx="7" fill="#2d3b55"/><rect x="-26" y="240" width="26" height="13" rx="6" fill="#2b2b2b"/><rect x="0" y="240" width="26" height="13" rx="6" fill="#2b2b2b"/><path d="M-24 74 L-40 130" fill="none" stroke="#3b4a63" stroke-width="14" stroke-linecap="round"/><circle cx="-41" cy="136" r="7.5" fill="#c68a5a"/><path d="M24 74 L50 104 L46 76" fill="none" stroke="#3b4a63" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/><path d="M-29 70 Q-30 64 -20 63 H20 Q30 64 29 70 L27 154 H-27 Z" fill="#3b4a63"/><path d="M-24 64 L-8 64 L0 84 L8 64 L24 64 L26 154 H-26 Z" fill="#ff7a1a"/><rect x="-26" y="106" width="52" height="8" fill="#eef3f6"/><rect x="-26" y="128" width="52" height="8" fill="#eef3f6"/><rect x="-6" y="52" width="12" height="16" rx="4" fill="#c68a5a"/><circle cx="-18" cy="42" r="4" fill="#c68a5a"/><circle cx="18" cy="42" r="4" fill="#c68a5a"/><circle cx="0" cy="38" r="19" fill="#c68a5a"/><circle cx="-7" cy="41" r="2.2" fill="#1c1c1c"/><circle cx="7" cy="41" r="2.2" fill="#1c1c1c"/><path d="M-7 48 Q0 55 7 48" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/><path d="M-23 35 A23 21 0 0 1 23 35 Z" fill="#f6c000"/><rect x="-4" y="13" width="8" height="22" rx="3" fill="#000" opacity=".14"/><rect x="-28" y="32" width="56" height="7" rx="3.5" fill="#f6c000"/><rect x="-28" y="36" width="56" height="3" rx="1.5" fill="#000" opacity=".12"/><path d="M41 12 A9 9 0 1 0 51 12" fill="none" stroke="#8fa0ad" stroke-width="5" stroke-linecap="round"/><path d="M46 29 V78" stroke="#8fa0ad" stroke-width="6" stroke-linecap="round"/><circle cx="46" cy="78" r="7.5" fill="#c68a5a"/></g>
+  <g transform="translate(146,238)"><ellipse cx="0" cy="254" rx="36" ry="5" fill="#000" opacity=".10"/><rect x="-20" y="148" width="17" height="98" rx="7" fill="#2d3b55"/><rect x="3" y="148" width="17" height="98" rx="7" fill="#2d3b55"/><rect x="-26" y="240" width="26" height="13" rx="6" fill="#2b2b2b"/><rect x="0" y="240" width="26" height="13" rx="6" fill="#2b2b2b"/><path d="M12 40 Q40 44 34 82 Q30 64 14 54 Z" fill="#1f1511"/><path d="M-24 74 L-40 108 L-18 114" fill="none" stroke="#46556f" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 74 L38 132" fill="none" stroke="#46556f" stroke-width="13" stroke-linecap="round"/><circle cx="39" cy="138" r="7" fill="#8a5a3b"/><path d="M-26 70 Q-27 64 -20 63 H20 Q27 64 26 70 L24 154 H-24 Z" fill="#46556f"/><path d="M-21 64 L-8 64 L0 84 L8 64 L21 64 L23 154 H-23 Z" fill="#c3e11a"/><rect x="-23" y="106" width="46" height="8" fill="#eef3f6"/><rect x="-23" y="128" width="46" height="8" fill="#eef3f6"/><rect x="-6" y="52" width="12" height="16" rx="4" fill="#8a5a3b"/><circle cx="-18" cy="42" r="4" fill="#8a5a3b"/><circle cx="18" cy="42" r="4" fill="#8a5a3b"/><circle cx="0" cy="38" r="19" fill="#8a5a3b"/><path d="M-19 38 Q-20 50 -14 54 Q-12 44 -8 36 Z" fill="#1f1511"/><path d="M19 38 Q20 50 14 54 Q12 44 8 36 Z" fill="#1f1511"/><circle cx="-7" cy="41" r="2.2" fill="#1c1c1c"/><circle cx="7" cy="41" r="2.2" fill="#1c1c1c"/><path d="M-7 48 Q0 55 7 48" fill="none" stroke="#1c1c1c" stroke-width="2" stroke-linecap="round"/><path d="M-23 35 A23 21 0 0 1 23 35 Z" fill="#ff7a1a"/><rect x="-4" y="13" width="8" height="22" rx="3" fill="#000" opacity=".14"/><rect x="-28" y="32" width="56" height="7" rx="3.5" fill="#ff7a1a"/><rect x="-28" y="36" width="56" height="3" rx="1.5" fill="#000" opacity=".12"/><g transform="rotate(-8 -22 112)"><rect x="-38" y="92" width="30" height="40" rx="3" fill="#8a6a3f"/><rect x="-35" y="97" width="24" height="32" fill="#ffffff"/><rect x="-29" y="89" width="12" height="7" rx="2" fill="#6b7785"/><path d="M-32 106 H-14 M-32 112 H-14 M-32 118 H-20" stroke="#9aa7b0" stroke-width="2"/></g><circle cx="-20" cy="114" r="7" fill="#8a5a3b"/></g>
+  <g class="gear spin-cw-c" style="transform-origin:58px 583px"><path fill="var(--accent-2)" fill-rule="evenodd" d="M88.6 578.2 L98.4 579.6 L98.4 586.4 L88.6 587.8 L86.9 594.1 L94.6 600.2 L91.3 606.1 L82.1 602.5 L77.5 607.1 L81.1 616.3 L75.2 619.6 L69.1 611.9 L62.8 613.6 L61.4 623.4 L54.6 623.4 L53.2 613.6 L46.9 611.9 L40.8 619.6 L34.9 616.3 L38.5 607.1 L33.9 602.5 L24.7 606.1 L21.4 600.2 L29.1 594.1 L27.4 587.8 L17.6 586.4 L17.6 579.6 L27.4 578.2 L29.1 571.9 L21.4 565.8 L24.7 559.9 L33.9 563.5 L38.5 558.9 L34.9 549.7 L40.8 546.4 L46.9 554.1 L53.2 552.4 L54.6 542.6 L61.4 542.6 L62.8 552.4 L69.1 554.1 L75.2 546.4 L81.1 549.7 L77.5 558.9 L82.1 563.5 L91.3 559.9 L94.6 565.8 L86.9 571.9 Z M51.0 583.0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0 Z M69.3 593.0 a6.0 6.0 0 1 0 12.0 0 a6.0 6.0 0 1 0 -12.0 0 Z M52.0 603.0 a6.0 6.0 0 1 0 12.0 0 a6.0 6.0 0 1 0 -12.0 0 Z M34.7 593.0 a6.0 6.0 0 1 0 12.0 0 a6.0 6.0 0 1 0 -12.0 0 Z M34.7 573.0 a6.0 6.0 0 1 0 12.0 0 a6.0 6.0 0 1 0 -12.0 0 Z M52.0 563.0 a6.0 6.0 0 1 0 12.0 0 a6.0 6.0 0 1 0 -12.0 0 Z M69.3 573.0 a6.0 6.0 0 1 0 12.0 0 a6.0 6.0 0 1 0 -12.0 0 Z"/></g>
+  <g class="gear spin-ccw-d" style="transform-origin:118px 583px"><path fill="var(--accent)" fill-rule="evenodd" d="M99.2 580.0 L90.5 575.5 L93.2 568.9 L102.6 571.8 L106.8 567.6 L103.9 558.2 L110.5 555.5 L115.0 564.2 L121.0 564.2 L125.5 555.5 L132.1 558.2 L129.2 567.6 L133.4 571.8 L142.8 568.9 L145.5 575.5 L136.8 580.0 L136.8 586.0 L145.5 590.5 L142.8 597.1 L133.4 594.2 L129.2 598.4 L132.1 607.8 L125.5 610.5 L121.0 601.8 L115.0 601.8 L110.5 610.5 L103.9 607.8 L106.8 598.4 L102.6 594.2 L93.2 597.1 L90.5 590.5 L99.2 586.0 Z M113.0 583.0 a5 5 0 1 0 10 0 a5 5 0 1 0 -10 0 Z"/></g>
+</svg>
+  </aside>
+
+  <main>
 {{YEARS}}
-</main>
+  </main>
+</div>
 
 <footer>
   {{PROJECT_COUNT}} projects &middot; Last updated {{UPDATED}}

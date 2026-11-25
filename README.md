@@ -56,6 +56,7 @@ You will rarely edit this file. The only part you might change is the block at t
 - The colours: the five lines under `/* Colours */` at the top.
 - The sentence under the title ("Browse past final year projects…").
 - The small line "Department of Mechatronic Engineering".
+- The artwork: the gears and the workers in the left-hand column are drawn in the file itself (the `<aside class="rail">` block). They turn slowly on screen, and the column disappears on narrow screens such as phones. To remove it, delete everything from `<aside` to `</aside>`. The yellow and black stripe under the banner is the `hazard` line in the CSS.
 
 **`overrides.csv`** – a spreadsheet-like file for fixing mistakes (see section 5). Empty at first.
 
