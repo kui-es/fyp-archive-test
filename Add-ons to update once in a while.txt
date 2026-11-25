@@ -1,0 +1,7 @@
+
+"Update the add-ons now and then"
+pypdf and pillow are the two add-ons your scripts use, and their developers fix bugs, including security ones, in new versions. This command installs the newest versions:
+
+
+
+python -m pip install -U pypdf pillow
