@@ -7,12 +7,14 @@
 <style>
   /* ---- Colours: change these to restyle the whole page ---- */
   :root {
-    --accent: #1b5e3b;       /* main colour (headings, button) */
-    --accent-dark: #124229;  /* button when the mouse is over it */
+    --accent: #1e293b;       /* main colour (headings, button, banner start) */
+    --accent-2: #0e7490;     /* second colour (banner end) */
+    --accent-dark: #0f172a;  /* button when the mouse is over it */
+    --tint: #e0f2f7;         /* light background behind the project ID */
     --ink: #1f2933;          /* normal text */
     --muted: #5f6b76;        /* grey text */
     --line: #dde3e8;         /* thin lines */
-    --paper: #f5f7f6;        /* page background */
+    --paper: #f4f7f9;        /* page background */
   }
 
   * { box-sizing: border-box; }
@@ -26,7 +28,7 @@
 
   /* ---- Top banner ---- */
   header {
-    background: var(--accent);
+    background: linear-gradient(120deg, var(--accent), var(--accent-2));
     color: #fff;
     padding: 2.4rem 1.25rem 2rem;
   }
@@ -42,7 +44,7 @@
   section.year h2 {
     margin: 0 0 .8rem;
     padding-bottom: .4rem;
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
     color: var(--accent);
     font-size: 1.6rem;
   }
@@ -57,7 +59,8 @@
     border-radius: 8px;
     margin-bottom: .6rem;
   }
-  li.project:hover, li.project:has(details[open]) { border-color: #b7c4cc; }
+  li.project:hover { border-color: var(--accent-2); }
+  li.project:has(details[open]) { border-color: var(--accent-2); border-left: 5px solid var(--accent); }
 
   summary {
     list-style: none;                 /* hide the browser's own arrow */
@@ -81,19 +84,19 @@
     align-self: center;
     width: .6rem; height: .6rem;
     border-right: 2px solid var(--accent);
-    border-bottom: 2px solid var(--accent);
+    border-bottom: 3px solid var(--accent);
     transform: rotate(45deg);
     transition: transform .15s;
   }
   details[open] > summary::after { transform: rotate(-135deg); }
-  summary:focus-visible { outline: 3px solid #7fb69a; outline-offset: -3px; border-radius: 8px; }
+  summary:focus-visible { outline: 3px solid var(--accent-2); outline-offset: -3px; border-radius: 8px; }
 
   .fyp-id {
     flex: none;
     font-weight: 600;
     font-size: .85rem;
     color: var(--accent);
-    background: #e7f1ec;
+    background: var(--tint);
     border-radius: 4px;
     padding: .1rem .5rem;
     white-space: nowrap;
@@ -118,7 +121,7 @@
   }
   a.download span { font-weight: 400; font-size: .8rem; opacity: .85; margin-left: .4rem; }
   a.download:hover { background: var(--accent-dark); }
-  a.download:focus-visible { outline: 3px solid #7fb69a; outline-offset: 2px; }
+  a.download:focus-visible { outline: 3px solid var(--accent-2); outline-offset: 2px; }
 
   footer { padding: 1rem 1.25rem 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
 
