@@ -27,7 +27,7 @@ from pypdf import PdfReader
 # --------------------------------------------------------------------------
 # SETTINGS  -  safe to change
 # --------------------------------------------------------------------------
-PAGE_TITLE = "B.Sc. Mechatronic Engineering Final Year Projects"
+PAGE_TITLE = "JKUAT B.Sc. Mechatronic Engineering Final Year Projects"
 REPORTS_FOLDER = "reports"      # where the PDF files are kept
 TEMPLATE_FILE = "template.html"  # the design of the page
 OVERRIDES_FILE = "overrides.csv"  # manual corrections (see README)
