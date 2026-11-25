@@ -1,0 +1,6 @@
+# Manual corrections. Lines starting with # are ignored.
+# Fill in only the cells you want to change; empty cells keep what build.py found.
+# For an abstract with several paragraphs, put || between the paragraphs.
+# Example (remove the # at the start to use it):
+# FYP-19-8.pdf,,,,"First paragraph of the abstract.||Second paragraph."
+file,id,title,year,abstract

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PAGE_TITLE}}</title>
+<style>
+  /* ---- Colours: change these to restyle the whole page ---- */
+  :root {
+    --accent: #1b5e3b;       /* main colour (headings, button) */
+    --accent-dark: #124229;  /* button when the mouse is over it */
+    --ink: #1f2933;          /* normal text */
+    --muted: #5f6b76;        /* grey text */
+    --line: #dde3e8;         /* thin lines */
+    --paper: #f5f7f6;        /* page background */
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.55;
+  }
+
+  /* ---- Top banner ---- */
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 2.4rem 1.25rem 2rem;
+  }
+  header .inner, main, footer { max-width: 60rem; margin: 0 auto; }
+  header p.uni { margin: 0 0 .4rem; font-size: .9rem; letter-spacing: .04em; opacity: .85; }
+  header h1 { margin: 0; font-size: clamp(1.6rem, 4vw, 2.3rem); line-height: 1.2; }
+  header p.intro { margin: .8rem 0 0; max-width: 40rem; opacity: .92; }
+
+  main { padding: 1.5rem 1.25rem 3rem; }
+
+  /* ---- One block per year ---- */
+  section.year { margin-top: 2.2rem; }
+  section.year h2 {
+    margin: 0 0 .8rem;
+    padding-bottom: .4rem;
+    border-bottom: 2px solid var(--accent);
+    color: var(--accent);
+    font-size: 1.6rem;
+  }
+  section.year h2 small { font-size: .85rem; font-weight: 400; color: var(--muted); margin-left: .5rem; }
+
+  /* ---- The numbered list of projects ---- */
+  ol { list-style: none; counter-reset: n; margin: 0; padding: 0; }
+  li.project {
+    counter-increment: n;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    margin-bottom: .6rem;
+  }
+  li.project:hover, li.project:has(details[open]) { border-color: #b7c4cc; }
+
+  summary {
+    list-style: none;                 /* hide the browser's own arrow */
+    display: flex;
+    align-items: baseline;
+    gap: .8rem;
+    padding: .85rem 1rem;
+    cursor: pointer;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before {                    /* the number: 1. 2. 3. */
+    content: counter(n) ".";
+    min-width: 1.8rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  summary::after {                     /* the drop-down arrow */
+    content: "";
+    flex: none;
+    margin-left: auto;
+    align-self: center;
+    width: .6rem; height: .6rem;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(45deg);
+    transition: transform .15s;
+  }
+  details[open] > summary::after { transform: rotate(-135deg); }
+  summary:focus-visible { outline: 3px solid #7fb69a; outline-offset: -3px; border-radius: 8px; }
+
+  .fyp-id {
+    flex: none;
+    font-weight: 600;
+    font-size: .85rem;
+    color: var(--accent);
+    background: #e7f1ec;
+    border-radius: 4px;
+    padding: .1rem .5rem;
+    white-space: nowrap;
+  }
+  .fyp-title { font-weight: 600; }
+
+  /* ---- What opens when you click the arrow ---- */
+  .detail { padding: 0 1rem 1.1rem 3.6rem; }
+  .detail h4 { margin: 0 0 .4rem; font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+  .detail p { margin: 0 0 .7rem; max-width: 46rem; }
+  .detail p.missing { color: var(--muted); font-style: italic; }
+
+  a.download {
+    display: inline-block;
+    margin-top: .3rem;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: .55rem 1.1rem;
+    border-radius: 6px;
+  }
+  a.download span { font-weight: 400; font-size: .8rem; opacity: .85; margin-left: .4rem; }
+  a.download:hover { background: var(--accent-dark); }
+  a.download:focus-visible { outline: 3px solid #7fb69a; outline-offset: 2px; }
+
+  footer { padding: 1rem 1.25rem 2rem; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--line); }
+
+  /* ---- Small screens ---- */
+  @media (max-width: 36rem) {
+    summary { flex-wrap: wrap; }
+    .fyp-title { flex-basis: 100%; order: 3; padding-left: 2.6rem; }
+    .detail { padding-left: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="inner">
+    <p class="uni">Department of Mechatronic Engineering</p>
+    <h1>{{PAGE_TITLE}}</h1>
+    <p class="intro">Browse past final year projects by year. Click a project to read its abstract and download the full report.</p>
+  </div>
+</header>
+
+<main>
+{{YEARS}}
+</main>
+
+<footer>
+  {{PROJECT_COUNT}} projects &middot; Last updated {{UPDATED}}
+</footer>
+
+</body>
+</html>

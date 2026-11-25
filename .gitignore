@@ -1,0 +1,7 @@
+# Files and folders that GitHub should NOT upload.
+# (Your large original reports stay on your own computer only.)
+incoming/
+__pycache__/
+*.tmp
+Thumbs.db
+.DS_Store
